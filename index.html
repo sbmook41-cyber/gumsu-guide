@@ -103,7 +103,6 @@ const CM=P+"CM본부_검수관련안내.png",KH=P+"검토위_개최알림.png",K
 const CK_S=P+"실시_체크리스트.png",CK_G=P+"기본_체크리스트.png";
 const SCM=P+"실시_CM통합검수서.png";
 const BJP=P+"검수서_본부장용.png",SJP=P+"검수서_사업부장용.png",CMNP=P+"CM본부_검수관련내용.png",YOSP=P+"요약_제공용.png",KHEP=P+"개최알림_엄이워크.png";
-const RHW=P+"실시_반영확인서.png";
 const NODL=[F6A,F6B,G4A,G4B,SCM,GCM];   // (기술실용) 양식 = 미리보기만, 다운로드 없음
 const AD="앱_자료/",DL={};
 DL[F1]=AD+"실시검토양식-1 (실시설계도서검토요청서).hwp";DL[F2]=AD+"3-2-2 실시검토양식-2 (설계실용).hwp";DL[F4]=AD+"실시검토양식-4 (내역관련 주요체크리스트).hwp";DL[F5]=AD+"실시검토양식-5 (신기술특허적용확인서).hwp";DL[F6A]=AD+"3-2-2-1갑. 실시검토양식-6 (기술실용) 갑지.hwp";DL[F6B]=AD+"3-2-2-1을. 실시검토양식-6 (기술실용) 을지.hwp";DL[SCM]=AD+"실시검토양식-6 (실시설계도서검토서-기술실용).hwp";
@@ -112,7 +111,7 @@ DL[CM]=AD+"CM본부 검토 관련 안내문.hwp";DL[KH]=AD+"검토위원회 개�
 DL[CK_S]=AD+"실시검토양식-3 설계체크리스트(건축, 구조, 기계, 전기, 토목).xlsx";DL[CK_G]=AD+"기본검토양식-3 설계체크리스트(건축, 구조, 기계, 전기, 토목).xlsx";
 DL[P+"검토위_운영규칙.png"]=AD+"설계 검토위원회 운영규칙.pdf";DL[P+"설계실_요약결재단계표.png"]=AD+"설계도면 검토단계 주요사항 요약 및 결재단계표.pdf";
 DL['bj']=AD+"3-2-3-1본. 기본및실시설계도서검토서(본부장용).hwp";DL['sj']=AD+"3-2-3-1사. 기본및실시설계도서검토서(사업부장용).hwp";DL['cmn']=AD+"CM본부 검토 관련 내용.hwp";DL['yos']=AD+"설계도면 검토단계 주요사항 요약(제공용).pdf";DL['khe']=AD+"검토위원회 개최알림(엄이워크)_기술실.hwp";
-DL[BJP]=AD+"3-2-3-1본. 기본및실시설계도서검토서(본부장용).hwp";DL[SJP]=AD+"3-2-3-1사. 기본및실시설계도서검토서(사업부장용).hwp";DL[CMNP]=AD+"CM본부 검토 관련 내용.hwp";DL[YOSP]=AD+"설계도면 검토단계 주요사항 요약(제공용).pdf";DL[KHEP]=AD+"검토위원회 개최알림(엄이워크)_기술실.hwp";DL[RHW]=AD+"3-2-2 실시설계검토양식-6-1 (실시설계검토 반영확인서).hwp";
+DL[BJP]=AD+"3-2-3-1본. 기본및실시설계도서검토서(본부장용).hwp";DL[SJP]=AD+"3-2-3-1사. 기본및실시설계도서검토서(사업부장용).hwp";DL[CMNP]=AD+"CM본부 검토 관련 내용.hwp";DL[YOSP]=AD+"설계도면 검토단계 주요사항 요약(제공용).pdf";DL[KHEP]=AD+"검토위원회 개최알림(엄이워크)_기술실.hwp";
 // 화면에 보이는 양식 이름 = 실제 다운로드 파일명(확장자 제외). 파일이 없으면 지정한 이름 사용.
 function dispName(k,fb){if(k&&DL[k]){var p=DL[k].split('/').pop();return p.replace(/\.(hwpx?|xlsx?|pdf|docx?|png)$/i,'');}return fb;}
 function dispExt(k){if(k&&DL[k]){var m=DL[k].match(/\.(hwpx?|xlsx?|pdf|docx?)$/i);if(m)return m[1].toLowerCase();}return '';}
@@ -133,7 +132,7 @@ const DATA={
    comm:{who:"검토위원회 (설계부서 + 기술실)",title:"검토위원회 개최  (이번에 추가)",job:"<div style='padding-left:1.4em;text-indent:-1.4em'>1. 기술실(주관)은 검토위원회를 개최합니다.</div><div style='padding-left:1.4em;text-indent:-1.4em'>2. 검토위원회 진행순서</div><div style='padding-left:2.8em;text-indent:-1.4em'>1) 설계실 PM : 설계 기본사항 설명</div><div style='padding-left:2.8em;text-indent:-1.4em'>2) 기술실 : 검토 내용(pdf) 설명</div><div style='padding-left:2.8em;text-indent:-1.4em'>3) 검토위원 : 질의응답, 의견수렴</div><div style='padding-left:1.4em;text-indent:-1.4em'>3. 설계실은 참석확인서 및 회의록을 작성합니다.</div>",forms:[["검토위원회 운영규칙","",P+"검토위_운영규칙.png"],["요약(제공용)","",YOSP],["요약 및 결재단계표","",P+"설계실_요약결재단계표.png"],["검토위원회 개최알림(엄이워크)","",KHEP],["참석확인서·회의록","",KP]],note:"운영규칙(제6조)에 따라 '개최 공지 → 개최' 순으로 진행합니다.",add:true},
    agree:{who:"기술실 (건축, 구조 분야)",title:"검토결과 협의 및 전달",job:"기술실은 검토 결과서와 검토 내용(pdf)을 설계실에 전달합니다. (설계실 담당)",forms:[["실시검토양식-6","검토서",F6A],["실시검토양식-6","검토서",F6B]],note:""},
    apply:{who:"설계실",title:"검토내용 반영",job:"<div style='padding-left:1.4em;text-indent:-1.4em'>1. 설계실은 검토 결과(의견)의 반영 여부 칸을 작성하여야 합니다.</div><div style='padding-left:1.4em;text-indent:-1.4em'>2. 검토서(양식-2)의 검토 내용 우측에 반영여부(O,X)를 표기하여야 합니다.</div><div style='padding-left:1.4em;text-indent:-1.4em'>3. 미반영(X)시에는 미반영 사유를 설명해야 합니다.</div>",forms:[],note:""},
-   subm:{who:"설계실 → 기술실",title:"설계검토 반영결과(서) 제출",job:"<div style='padding-left:1.4em;text-indent:-1.4em'>1. 설계실은 납품 1주 전,</div><div style='padding-left:1.4em'>3-2-2-1갑,을. 실시검토양식-6 (기술실용) 갑지, 을지에 반영여부(O,X)를 표기하여 기술실에 제출합니다.</div><div style='padding-left:1.4em;text-indent:-1.4em'>2. 기술실의 확인(서명) 후 사장 결재를 득해야 합니다.</div>",forms:[["반영확인서","",RHW]],note:""},
+   subm:{who:"설계실 → 기술실",title:"설계검토 반영결과(서) 제출",job:"<div style='padding-left:1.4em;text-indent:-1.4em'>1. 설계실은 납품 1주 전,</div><div style='padding-left:1.4em'>3-2-2-1갑,을. 실시검토양식-6 (기술실용) 갑지, 을지에 반영여부(O,X)를 표기하여 기술실에 제출합니다.</div><div style='padding-left:1.4em;text-indent:-1.4em'>2. 기술실의 확인(서명) 후 사장 결재를 득해야 합니다.</div>",forms:[],note:""},
    rcvr:{who:"기술실 (건축, 구조 분야)",title:"반영결과(서) 접수",click:false,white:true},
    reg:{who:"설계실",title:"설계도서검토서 및<br>체크리스트 등록",job:"<div>설계자는 검토서·체크리스트를 인트라넷에 등록합니다.</div><div style='padding-left:1.4em;text-indent:-1.4em'>1) 설계도서 검토서 / 반영결과</div><div style='padding-left:1.4em;text-indent:-1.4em'>2) 설계 체크리스트 / 분야별 확인사항</div>",forms:[],note:""},
   },
